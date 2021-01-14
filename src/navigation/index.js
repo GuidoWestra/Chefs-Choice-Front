@@ -13,7 +13,7 @@ import Homescreen from "../screens/HomeScreen";
 import Discover from "../screens/DiscoverRecipes";
 import Favorites from "../screens/Favorites";
 import NotFound from "../screens/NotFound";
-import { Text } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -23,8 +23,8 @@ export default function Navigation() {
   if (true === true) {
     return (
       <NavigationContainer>
-        <Text>hi</Text>
-        <Stack.Navigator>
+        <Text>Hi</Text>
+        <Stack.Navigator initialRouteName="LogIn">
           <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>

@@ -9,8 +9,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Provider store={store}>
-        <Navigation component={Navigation} />
         <StatusBar style="auto" />
+        <Navigation />
       </Provider>
     </View>
   );
