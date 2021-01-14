@@ -9,7 +9,6 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case "Login_Succes":
-      console.log("hi from reducer", AsyncStorage.getItem("token"));
       AsyncStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
 

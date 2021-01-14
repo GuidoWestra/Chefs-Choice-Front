@@ -2,6 +2,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import { Text, View, StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // #Token
 import { useSelector } from "react-redux";
@@ -12,18 +13,20 @@ import SignUp from "../screens/SignUp";
 import Homescreen from "../screens/HomeScreen";
 import Discover from "../screens/DiscoverRecipes";
 import Favorites from "../screens/Favorites";
+import Account from "../screens/Account";
 import NotFound from "../screens/NotFound";
-import { Text, View, StyleSheet } from "react-native";
+// #Logos
+// import { Heart, Home, Search } from "../../assets/logos";
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 export default function Navigation() {
   // const token = useSelector(selectToken());
 
-  if (true === true) {
+  if (true === false) {
     return (
       <NavigationContainer>
-        <Text>Hi</Text>
         <Stack.Navigator>
           <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
@@ -33,12 +36,11 @@ export default function Navigation() {
   } else
     return (
       <NavigationContainer>
-        <Text>Hi2</Text>
         <Tab.Navigator>
-          <Tab.Screen name="Homescreen" component={Homescreen} />
+          <Tab.Screen name="Home" component={Homescreen} />
           <Tab.Screen name="Discover" component={Discover} />
           <Tab.Screen name="Favorites" component={Favorites} />
-          <Tab.Screen name="NotFound" component={NotFound} />
+          <Tab.Screen name="Account" component={Account} />
         </Tab.Navigator>
       </NavigationContainer>
     );
