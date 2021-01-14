@@ -14,6 +14,7 @@ export default function SignUp() {
     console.log("hi");
     dispatch(signup(name, email, password));
 
+    set_name("");
     set_email("");
     set_password("");
   }
