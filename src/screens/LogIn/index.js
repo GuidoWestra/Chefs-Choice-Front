@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, Button, TextInput } from "react-native";
+import { View, Text, Button, TextInput, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/user/actions";
 
-export default function Login() {
+export default function LogIn() {
   const [email, set_email] = useState("email");
   const [password, set_password] = useState("password");
   const dispatch = useDispatch();
-
   function submitLogin(event) {
     event.preventDefault();
     dispatch(login(email, password));
@@ -16,8 +15,9 @@ export default function Login() {
     set_password("");
   }
 
+  console.log("I am rendering?");
   return (
-    <View>
+    <View style={styles.container}>
       <Text>Welcome to the LoginPage</Text>
       <TextInput
         style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
@@ -33,3 +33,11 @@ export default function Login() {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});

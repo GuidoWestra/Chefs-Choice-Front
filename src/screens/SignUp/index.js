@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Button, TextInput } from "react-native";
 import { useDispatch } from "react-redux";
-import { signup } from "../../store/user/actions";
+import { signUp } from "../../store/user/actions";
 
 export default function SignUp() {
   const [name, set_name] = useState("name");
@@ -12,7 +12,7 @@ export default function SignUp() {
   function submitSignUp(event) {
     event.preventDefault();
     console.log("hi");
-    dispatch(signup(name, email, password));
+    dispatch(signUp(name, email, password));
 
     set_name("");
     set_email("");
