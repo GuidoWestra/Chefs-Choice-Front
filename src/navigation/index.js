@@ -24,7 +24,7 @@ export default function Navigation() {
     return (
       <NavigationContainer>
         <Text>Hi</Text>
-        <Stack.Navigator initialRouteName="LogIn">
+        <Stack.Navigator>
           <Stack.Screen name="LogIn" component={LogIn} />
           <Stack.Screen name="SignUp" component={SignUp} />
         </Stack.Navigator>
@@ -33,6 +33,7 @@ export default function Navigation() {
   } else
     return (
       <NavigationContainer>
+        <Text>Hi2</Text>
         <Tab.Navigator>
           <Tab.Screen name="Homescreen" component={Homescreen} />
           <Tab.Screen name="Discover" component={Discover} />
