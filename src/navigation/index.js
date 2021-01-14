@@ -1,11 +1,11 @@
-// React
+// #React
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import * as React from "react";
-// Token
+// #Token
 import { useSelector } from "react-redux";
 import { selectToken } from "../store/user/selectors";
-// Components
+// #Components
 import LogIn from "../screens/LogIn";
 import SignUp from "../screens/SignUp";
 import Home from "../screens/Home";
