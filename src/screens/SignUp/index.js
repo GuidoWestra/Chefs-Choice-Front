@@ -25,15 +25,18 @@ export default function SignUp() {
       <TextInput
         style={styles.inputField}
         onChangeText={(text) => set_name(text)}
-        value={name}
         placeholder="name"
       />
-      <TextInput style={styles.inputField} onChangeText={(text) => set_email(text)} value={email} />
+      <TextInput
+        style={styles.inputField}
+        onChangeText={(text) => set_email(text)}
+        placeholder="email"
+      />
       <TextInput
         style={styles.inputField}
         secureTextEntry={true}
         onChangeText={(text) => set_password(text)}
-        value={password}
+        placeholder="password"
       />
       <TouchableOpacity title="SignUp" style={styles.button} onPress={submitSignUp}>
         <Text> Sign Up </Text>

@@ -18,7 +18,7 @@ import Account from "../screens/Account";
 import NotFound from "../screens/NotFound";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 // #Logos
-// import { Heart, Home, Search } from "../../assets/logos";
+import { Feather, AntDesign, Foundation, FontAwesome, Ionicons } from "@expo/vector-icons";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -54,7 +54,46 @@ export default function Navigation() {
   } else
     return (
       <NavigationContainer>
-        <Tab.Navigator>
+        <Tab.Navigator
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
+              let iconName;
+
+              if (route.name === "Home") {
+                return focused ? (
+                  <Foundation name="home" size={24} color="black" />
+                ) : (
+                  <Feather name="home" size={24} color="black" />
+                );
+              }
+              if (route.name === "Discover") {
+                return focused ? (
+                  <FontAwesome name="search" size={24} color="black" />
+                ) : (
+                  <AntDesign name="search1" size={24} color="black" />
+                );
+              }
+              if (route.name === "Favorites") {
+                return focused ? (
+                  <AntDesign name="heart" size={23} color="black" />
+                ) : (
+                  <AntDesign name="hearto" size={23} color="black" />
+                );
+              }
+              if (route.name === "Account") {
+                return focused ? (
+                  <Ionicons name="person-circle-sharp" size={24} color="black" />
+                ) : (
+                  <Ionicons name="person-circle-outline" size={24} color="black" />
+                );
+              }
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: "blue",
+            inactiveTintColor: "gray",
+          }}
+        >
           <Tab.Screen name="Home" component={Homescreen} />
           <Tab.Screen name="Discover" component={Discover} />
           <Tab.Screen name="Favorites" component={Favorites} />
