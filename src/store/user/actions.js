@@ -8,7 +8,7 @@ import {
   setMessage,
 } from "../appState/actions";
 
-const loginSucces = (userWithToken) => {
+export const loginSucces = (userWithToken) => {
   return {
     type: "Login_Succes",
     payload: userWithToken,

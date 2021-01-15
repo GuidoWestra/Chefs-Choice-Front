@@ -3,10 +3,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 const initialState = {
   name: null,
   email: null,
-  token: AsyncStorage.getItem("token") || null,
+  token: null,
 };
 
 export default (state = initialState, action) => {
+  console.log("inside reducer state ", state);
   switch (action.type) {
     case "Login_Succes":
       AsyncStorage.setItem("token", action.payload.token);
