@@ -7,6 +7,7 @@ export default function LogIn({ navigation }) {
   const [email, set_email] = useState("email");
   const [password, set_password] = useState("password");
   const dispatch = useDispatch();
+
   function submitLogin(event) {
     event.preventDefault();
     dispatch(login(email, password));

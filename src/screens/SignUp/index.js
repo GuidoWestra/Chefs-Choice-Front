@@ -1,20 +1,18 @@
 import React, { useState } from "react";
-import { View, Text, Button, TextInput, StyleSheet } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity } from "react-native";
 import { useDispatch } from "react-redux";
-import { signUp } from "../../store/user/actions";
+import { login, signUp } from "../../store/user/actions";
 
 export default function SignUp() {
   const [name, set_name] = useState("");
-  const [email, set_email] = useState("email");
-  const [password, set_password] = useState("password");
+  const [email, set_email] = useState("");
+  const [password, set_password] = useState("");
   const dispatch = useDispatch();
 
   function submitSignUp(event) {
     event.preventDefault();
     console.log("hi");
     dispatch(signUp(name, email, password));
-
     set_name("");
     set_email("");
     set_password("");
