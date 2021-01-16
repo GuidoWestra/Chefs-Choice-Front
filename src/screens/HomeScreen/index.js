@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   picture: {
-    paddingBottom: 200,
+    paddingBottom: 20,
     borderWidth: 0,
     borderColor: "black",
     borderRadius: 10,
