@@ -19,12 +19,11 @@ export default function HomeScreen() {
       <Text>Welcome {user.name},</Text>
       <Image
         style={styles.picture}
-        source={
-          {
-            uri: recipe.image,
-          } ||
-          "https://www.pinclipart.com/picdir/big/175-1750251_loader-loading-progress-wait-icon-loading-png-clipart.png"
-        }
+        source={{
+          uri:
+            recipe.image ||
+            "https://www.pinclipart.com/picdir/big/175-1750251_loader-loading-progress-wait-icon-loading-png-clipart.png",
+        }}
         alt="oops"
       />
       <Text>The Dish of the Day is:{recipe.title}</Text>
