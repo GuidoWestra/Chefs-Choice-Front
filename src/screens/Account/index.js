@@ -16,6 +16,7 @@ export default function HomeScreen() {
     <View style={styles.container}>
       <Text>Hi {user.name}</Text>
       <Text>Welcome to your account page!</Text>
+
       <TouchableOpacity style={styles.button} onPress={submitLogOut}>
         <Text> LogOut</Text>
       </TouchableOpacity>
@@ -31,13 +32,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   button: {
-    width: 100,
+    width: 250,
     height: 50,
     backgroundColor: "#db4848",
     borderWidth: 1,
     borderRadius: 5,
     marginTop: 650,
-    paddingLeft: 28,
+    paddingLeft: 100,
     paddingTop: 16,
   },
 });

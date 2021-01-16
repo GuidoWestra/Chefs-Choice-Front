@@ -7,7 +7,6 @@ const initialState = {
 };
 
 export default (state = initialState, action) => {
-  console.log("inside reducer state ", state);
   switch (action.type) {
     case "Login_Succes":
       AsyncStorage.setItem("token", action.payload.token);

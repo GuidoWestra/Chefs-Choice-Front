@@ -11,7 +11,6 @@ export default function SignUp() {
 
   function submitSignUp(event) {
     event.preventDefault();
-    console.log("hi");
     dispatch(signUp(name, email, password));
     set_name("");
     set_email("");

@@ -53,9 +53,7 @@ export const signUp = (name, email, password) => {
 export const login = (email, password) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
-    console.log("hi2");
     try {
-      console.log("Inside actions", email, password);
       const response = await axios.post(`${apiUrl}/login`, {
         email: email,
         password: password,

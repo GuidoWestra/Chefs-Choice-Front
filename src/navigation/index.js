@@ -26,17 +26,12 @@ const Tab = createBottomTabNavigator();
 export default function Navigation() {
   const dispatch = useDispatch();
   const token2 = useSelector(selectToken);
-  console.log("is this mooi man?", token2);
   useEffect(() => {
     async function getToken() {
       const token = await AsyncStorage.getItem("token");
-      console.log("insideUseffect", token);
-      console.log("INside with token type?", typeof token);
       if (token) {
-        console.log("insideIf", token);
         dispatch(loginSucces(token));
       } else {
-        console.log("Oops there was no token provided");
       }
     }
     getToken();
