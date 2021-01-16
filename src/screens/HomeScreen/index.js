@@ -17,10 +17,18 @@ export default function HomeScreen() {
   return (
     <View style={styles.container}>
       <Text>Welcome {user.name},</Text>
-      <Image style={styles.picture} source={recipe.image} alt="oops" />
+      <Image
+        style={styles.picture}
+        source={
+          {
+            uri: recipe.image,
+          } ||
+          "https://www.pinclipart.com/picdir/big/175-1750251_loader-loading-progress-wait-icon-loading-png-clipart.png"
+        }
+        alt="oops"
+      />
       <Text>The Dish of the Day is:{recipe.title}</Text>
       <Text>The id for this dish is:{recipe.id}</Text>
-      <Text>find out more here:{recipe.sourceUrl}</Text>
     </View>
   );
 }
@@ -33,6 +41,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   picture: {
+    paddingBottom: 200,
+    borderWidth: 0,
+    borderColor: "black",
+    borderRadius: 10,
     width: "50%",
     height: "50%",
   },
