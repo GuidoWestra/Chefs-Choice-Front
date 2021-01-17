@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDaily } from "../../store/recipe/actions";
 import { selectDaily } from "../../store/recipe/selectors";
 import { selectUser } from "../../store/user/selectors";
 
 export default function HomeScreen() {
+  const [heart, set_heart] = useState(true);
   const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
@@ -18,7 +20,6 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text>Welcome {user.name},</Text>
       <Image
         style={styles.picture}
         source={{
@@ -28,8 +29,13 @@ export default function HomeScreen() {
         }}
         alt="oops"
       />
-      <Text>The Dish of the Day is:{recipe.title}</Text>
-      <Text>The id for this dish is:{recipe.id}</Text>
+      <Text style={styles.title}>{recipe.title}</Text>
+      <TouchableOpacity onPress={(recipe) => set_heart(!heart)}>
+        <Text style={styles.title}>{heart ? "♡" : "🖤"}</Text>
+      </TouchableOpacity>
+      {/* <TouchableOpacity>
+        <Text> find out more</Text>
+      </TouchableOpacity> */}
     </View>
   );
 }
@@ -40,12 +46,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 1,
+    borderWidth: 0.4,
+    borderColor: "grey",
     borderRadius: 25,
     marginTop: 100,
     marginLeft: 5,
     width: 400,
-    height: 500,
+    height: 600,
+  },
+  title: {
+    fontSize: 20,
+    color: "black",
   },
   picture: {
     paddingBottom: 20,
