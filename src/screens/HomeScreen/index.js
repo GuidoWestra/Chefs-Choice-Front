@@ -10,10 +10,12 @@ export default function HomeScreen() {
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
   console.log("recipe on home", recipe);
+
   useEffect(() => {
     dispatch(fetchDaily());
     console.log("UseEffect called");
   }, []);
+
   return (
     <View style={styles.container}>
       <Text>Welcome {user.name},</Text>
@@ -34,17 +36,23 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    display: "flex",
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    borderWidth: 1,
+    borderRadius: 25,
+    marginTop: 100,
+    marginLeft: 5,
+    width: 400,
+    height: 500,
   },
   picture: {
     paddingBottom: 20,
     borderWidth: 0,
     borderColor: "black",
     borderRadius: 10,
-    width: "50%",
-    height: "50%",
+    width: "95%",
+    height: "75%",
   },
 });
