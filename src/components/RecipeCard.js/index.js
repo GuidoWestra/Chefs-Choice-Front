@@ -1,39 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchDaily } from "../../store/recipe/actions";
-import { selectDaily } from "../../store/recipe/selectors";
-import { selectUser } from "../../store/user/selectors";
+import React, { useState } from "react";
+import { View, Text } from "react-native";
 
-export default function HomeScreen() {
+export default function index(props) {
   const [heart, set_heart] = useState(true);
-  const user = useSelector(selectUser);
-  const recipe = useSelector(selectDaily);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(fetchDaily());
-  }, []);
-
   return (
     <View style={styles.container}>
       <Image
         style={styles.picture}
         source={{
           uri:
-            recipe.image ||
+            props.image ||
             "https://www.pinclipart.com/picdir/big/175-1750251_loader-loading-progress-wait-icon-loading-png-clipart.png",
         }}
         alt="oops"
       />
-      <Text style={styles.title}>{recipe.title}</Text>
-      <TouchableOpacity onPress={(recipe) => set_heart(!heart)}>
+      <Text style={styles.title}>{props.title}</Text>
+      <TouchableOpacity onPress={() => set_heart(!heart)}>
         <Text style={styles.title}>{heart ? "♡" : "🖤"}</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity>
-        <Text> find out more</Text>
-      </TouchableOpacity> */}
+          <Text> find out more</Text>
+        </TouchableOpacity> */}
     </View>
   );
 }
