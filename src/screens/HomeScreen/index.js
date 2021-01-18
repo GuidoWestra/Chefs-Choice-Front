@@ -28,7 +28,7 @@ export default function HomeScreen() {
         alt="oops"
       />
       <Text style={styles.title}>{recipe.title}</Text>
-      <TouchableOpacity onPress={(recipe) => set_heart(!heart)}>
+      <TouchableOpacity onPress={() => set_heart(!heart)}>
         <Text style={styles.title}>{heart ? "♡" : "🖤"}</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity>
