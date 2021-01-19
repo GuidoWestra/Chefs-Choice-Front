@@ -3,3 +3,5 @@ export const selectToken = (state) => {
 };
 
 export const selectUser = (state) => state.user;
+
+export const selectFav = (state) => state.user.recipes;

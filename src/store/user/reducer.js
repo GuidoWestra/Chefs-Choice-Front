@@ -4,11 +4,13 @@ const initialState = {
   name: null,
   email: null,
   token: null,
+  recipes: [],
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
     case "Login_Succes":
+      console.log("whut am i", action.payload);
       AsyncStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
 

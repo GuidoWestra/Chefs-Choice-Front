@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDaily } from "../../store/recipe/actions";
-import { selectDaily } from "../../store/recipe/selectors";
+import { fetchDaily } from "../../store/daily_recipe/actions";
+import { selectDaily } from "../../store/daily_recipe/selectors";
 import { selectUser } from "../../store/user/selectors";
 
 export default function HomeScreen() {
@@ -11,7 +11,7 @@ export default function HomeScreen() {
   const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
-
+  console.log("user:", user);
   useEffect(() => {
     dispatch(fetchDaily());
   }, []);

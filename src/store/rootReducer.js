@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import appState from "./appState/reducer";
 import user from "./user/reducer";
-import recipe from "./recipe/reducer";
+import daily_recipe from "./daily_recipe/reducer";
 //import recipe reducer
 export default combineReducers({
   appState,
   user,
-  recipe,
+  daily_recipe,
 });
