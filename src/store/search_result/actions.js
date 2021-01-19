@@ -22,7 +22,7 @@ export const fetchResult = (ingredients) => {
     try {
       const api_ingredients = ingredients.join(",+");
       const response = await axios.get(
-        `${spoonacular_search}?ingredients=${api_ingredients}&number=5&apiKey=${key_1}`
+        `${spoonacular_search}?ingredients=${api_ingredients}&number=5&apiKey=${key_2}`
       );
       console.log("This is response", response);
       dispatch(set_result(response.data));

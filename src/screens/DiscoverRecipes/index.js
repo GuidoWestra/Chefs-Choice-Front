@@ -18,13 +18,12 @@ export default function Discover(navigation) {
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
   const recipes = useSelector(selectResult);
-
+  const mockRecipes = [{ title: "apple" }, { title: "dips" }];
   function onPressHandler() {
     if (temp === "") return 0;
     if (ingredients.length === 5) return 0;
     set_ingredients([...ingredients, temp]);
     set_temp("");
-    console.log("Ingredients:", ingredients);
   }
 
   async function startSearch() {
@@ -33,8 +32,8 @@ export default function Discover(navigation) {
   }
 
   useEffect(() => {
-    console.log("useEffect rendered");
-  }, []);
+    console.log("useEffect rendered", recipes);
+  }, [recipes]);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Please Enter Ingredients:</Text>
@@ -75,12 +74,12 @@ export default function Discover(navigation) {
           >
             <Text> Hide </Text>
           </TouchableOpacity>
-          {recipes
-            ? recipes.map((recipe) => {
-                return <Text>{recipe.title}</Text>;
-              })
-            : null}
         </ScrollView>
+        {recipes
+          ? recipes.map((recipe, i) => {
+              return <Text key={i}>{recipe.title}</Text>;
+            })
+          : null}
       </Modal>
     </View>
   );
