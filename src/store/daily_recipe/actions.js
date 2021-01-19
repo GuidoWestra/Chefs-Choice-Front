@@ -13,7 +13,7 @@ export const fetchDaily = () => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
-      const response = await axios.get(`${spoonacular_daily}?apiKey=${key_1}`);
+      const response = await axios.get(`${spoonacular_daily}?apiKey=${key_2}`);
       // console.log("inside Fetch", response.data.recipes[0]);
       dispatch(set_daily(response.data.recipes[0]));
       dispatch(appDoneLoading());

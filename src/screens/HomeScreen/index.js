@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDaily } from "../../store/daily_recipe/actions";
 import { selectDaily } from "../../store/daily_recipe/selectors";
 import { selectUser } from "../../store/user/selectors";
 
 export default function HomeScreen() {
-  const [heart, set_heart] = useState(true);
   const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
-  console.log("user:", user);
+  // const recipe = { title: "chips" };
+
+  async function onPressHandler(recipe) {
+    console.log("Added to Favorites", recipe);
+  }
+
   useEffect(() => {
     dispatch(fetchDaily());
   }, []);
@@ -21,15 +24,17 @@ export default function HomeScreen() {
       <Image
         style={styles.picture}
         source={{
-          uri:
-            recipe.image ||
-            "https://www.pinclipart.com/picdir/big/175-1750251_loader-loading-progress-wait-icon-loading-png-clipart.png",
+          uri: recipe.image || null,
         }}
         alt="oops"
       />
       <Text style={styles.title}>{recipe.title}</Text>
-      <TouchableOpacity onPress={() => set_heart(!heart)}>
-        <Text style={styles.title}>{heart ? "♡" : "🖤"}</Text>
+      <TouchableOpacity
+        onPress={() => {
+          onPressHandler(recipe);
+        }}
+      >
+        <Text style={styles.title}>Add to Favorites</Text>
       </TouchableOpacity>
       {/* <TouchableOpacity>
         <Text> find out more</Text>
