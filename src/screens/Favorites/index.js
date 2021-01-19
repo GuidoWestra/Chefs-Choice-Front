@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { useSelector } from "react-redux";
 import { selectFav } from "../../store/user/selectors";
@@ -6,6 +6,7 @@ import { selectFav } from "../../store/user/selectors";
 export default function Favorites() {
   const fav = useSelector(selectFav);
 
+  useEffect(() => {}, [fav]);
   return (
     <View style={styles.container}>
       <Text>Welcome To Favorites</Text>

@@ -7,6 +7,7 @@ import {
   showMessageWithTimeout,
   setMessage,
 } from "../appState/actions";
+import { useSelector } from "react-redux";
 
 export const loginSucces = (userWithToken) => {
   return {
@@ -23,6 +24,27 @@ const tokenStillValid = (userWithoutToken) => {
 };
 
 export const logOut = () => ({ type: "Log_Out" });
+
+export const toggleFav = (recipe) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    try {
+      const token = selectToken(getState());
+      const { id } = recipe;
+      console.log("inside store with recipe and id", id, token);
+      await axios.post(
+        `${apiUrl}/favorites/toggle/${id}`,
+        {},
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      console.log("Succes recipe added:", apiUrl);
+    } catch (e) {
+      console.log(e.message);
+    }
+  };
+};
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
