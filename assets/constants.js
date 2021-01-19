@@ -1,4 +1,7 @@
-export const apiUrl = "http://192.168.178.171:4000"; // heroku link here :)
+export const apiUrl =
+  process.env.NODE_ENV === "production"
+    ? "https://backend-chefs-choice.herokuapp.com"
+    : "http://192.168.178.171:4000";
 export const spoonacular_daily = "https://api.spoonacular.com/recipes/random";
 export const spoonacular_search = "https://api.spoonacular.com/recipes/findByIngredients";
 export const Default_Message_Timeout = 3000;
