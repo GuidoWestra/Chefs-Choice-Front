@@ -3,16 +3,17 @@ import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDaily } from "../../store/daily_recipe/actions";
 import { selectDaily } from "../../store/daily_recipe/selectors";
+import { toggleFav } from "../../store/user/actions";
 import { selectUser } from "../../store/user/selectors";
 
 export default function HomeScreen() {
   const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
-  // const recipe = { title: "chips" };
 
   async function onPressHandler(recipe) {
     console.log("Added to Favorites", recipe);
+    dispatch(toggleFav(recipe));
   }
 
   useEffect(() => {
