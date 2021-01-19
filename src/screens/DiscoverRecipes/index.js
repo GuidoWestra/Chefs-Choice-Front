@@ -1,15 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+} from "react-native";
 
-export default function Discover() {
+export default function Discover(navigation) {
   const [ingredients, set_ingredients] = useState("");
   const [temp, set_temp] = useState("");
+  const [open, setOpen] = useState(false);
 
   function onPressHandler() {
     set_ingredients([...ingredients, temp]);
     set_temp("");
     console.log("Ingredients:", ingredients);
   }
+
+  async function startSearch() {}
 
   useEffect(() => {
     console.log("useEffect rendered");
@@ -38,6 +49,25 @@ export default function Discover() {
       <TouchableOpacity onPress={() => set_ingredients("")} style={styles.inputButton}>
         <Text> Clear All</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => {
+          setOpen(!open);
+        }}
+      >
+        <Text> Show</Text>
+      </TouchableOpacity>
+      <Modal visible={open} animationType="slide">
+        <ScrollView>
+          <Text>Search Results</Text>
+          <TouchableOpacity
+            onPress={() => {
+              setOpen(!open);
+            }}
+          >
+            <Text> Hide </Text>
+          </TouchableOpacity>
+        </ScrollView>
+      </Modal>
     </View>
   );
 }

@@ -9,8 +9,8 @@ export default function Favorites() {
   return (
     <View style={styles.container}>
       <Text>Welcome To Favorites</Text>
-      {fav.map((fav) => {
-        return <Text> {fav.title}</Text>;
+      {fav.map((fav, i) => {
+        return <Text key={i}> {fav.title}</Text>;
       })}
     </View>
   );
