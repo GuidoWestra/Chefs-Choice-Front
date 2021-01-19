@@ -67,11 +67,13 @@ export default function Discover(navigation) {
           >
             <Text> Hide </Text>
           </TouchableOpacity>
-          {ingredients
-            ? ingredients.map((name, i) => {
-                return <Text key={i}>{name}</Text>;
-              })
-            : null}
+          {ingredients ? (
+            ingredients.map((name, i) => {
+              return <Text key={i}>{name}</Text>;
+            })
+          ) : (
+            <Text> Please enter ingredients </Text>
+          )}
         </ScrollView>
       </Modal>
     </View>
