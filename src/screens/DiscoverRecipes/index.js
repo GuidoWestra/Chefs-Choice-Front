@@ -20,7 +20,9 @@ export default function Discover(navigation) {
     console.log("Ingredients:", ingredients);
   }
 
-  async function startSearch() {}
+  async function startSearch() {
+    setOpen(!open);
+  }
 
   useEffect(() => {
     console.log("useEffect rendered");
@@ -29,8 +31,12 @@ export default function Discover(navigation) {
     <View style={styles.container}>
       <Text style={styles.header}>Please Enter Ingredients:</Text>
       {ingredients
-        ? ingredients.map((name) => {
-            return <Text style={styles.ingredient}>{name} </Text>;
+        ? ingredients.map((name, i) => {
+            return (
+              <Text key={i} style={styles.ingredient}>
+                {name}
+              </Text>
+            );
           })
         : null}
       <TextInput
@@ -49,23 +55,23 @@ export default function Discover(navigation) {
       <TouchableOpacity onPress={() => set_ingredients("")} style={styles.inputButton}>
         <Text> Clear All</Text>
       </TouchableOpacity>
-      <TouchableOpacity
-        onPress={() => {
-          setOpen(!open);
-        }}
-      >
-        <Text> Show</Text>
-      </TouchableOpacity>
+
       <Modal visible={open} animationType="slide">
         <ScrollView>
           <Text>Search Results</Text>
           <TouchableOpacity
+            style={styles.inputButton}
             onPress={() => {
               setOpen(!open);
             }}
           >
             <Text> Hide </Text>
           </TouchableOpacity>
+          {ingredients
+            ? ingredients.map((name, i) => {
+                return <Text key={i}>{name}</Text>;
+              })
+            : null}
         </ScrollView>
       </Modal>
     </View>
