@@ -8,7 +8,8 @@ import {
   Modal,
   ScrollView,
 } from "react-native";
-import { useDispatch } from "react-redux";
+import { selectResult } from "../../store/search_result/selectors";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchResult } from "../../store/search_result/actions";
 
 export default function Discover(navigation) {
@@ -16,8 +17,11 @@ export default function Discover(navigation) {
   const [temp, set_temp] = useState("");
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const recipes = useSelector(selectResult);
 
   function onPressHandler() {
+    if (temp === "") return 0;
+    if (ingredients.length === 5) return 0;
     set_ingredients([...ingredients, temp]);
     set_temp("");
     console.log("Ingredients:", ingredients);
@@ -71,13 +75,11 @@ export default function Discover(navigation) {
           >
             <Text> Hide </Text>
           </TouchableOpacity>
-          {ingredients ? (
-            ingredients.map((name, i) => {
-              return <Text key={i}>{name}</Text>;
-            })
-          ) : (
-            <Text> Please enter ingredients </Text>
-          )}
+          {recipes
+            ? recipes.map((recipe) => {
+                return <Text>{recipe.title}</Text>;
+              })
+            : null}
         </ScrollView>
       </Modal>
     </View>
