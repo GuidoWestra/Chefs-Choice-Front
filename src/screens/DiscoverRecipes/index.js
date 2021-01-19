@@ -8,11 +8,14 @@ import {
   Modal,
   ScrollView,
 } from "react-native";
+import { useDispatch } from "react-redux";
+import { fetchResult } from "../../store/search_result/actions";
 
 export default function Discover(navigation) {
   const [ingredients, set_ingredients] = useState("");
   const [temp, set_temp] = useState("");
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
 
   function onPressHandler() {
     set_ingredients([...ingredients, temp]);
@@ -21,6 +24,7 @@ export default function Discover(navigation) {
   }
 
   async function startSearch() {
+    dispatch(fetchResult(ingredients));
     setOpen(!open);
   }
 
