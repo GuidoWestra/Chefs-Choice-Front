@@ -7,30 +7,39 @@ import {
   TouchableOpacity,
   Modal,
   ScrollView,
+  FlatList,
+  Image,
 } from "react-native";
 import { selectResult } from "../../store/search_result/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchResult } from "../../store/search_result/actions";
+import { toggleFav } from "../../store/user/actions";
 
-export default function Discover(navigation) {
+export default function Discover() {
   const [ingredients, set_ingredients] = useState("");
   const [temp, set_temp] = useState("");
   const [open, setOpen] = useState(false);
-  const dispatch = useDispatch();
+
   const recipes = useSelector(selectResult);
-  const mockRecipes = [{ title: "apple" }, { title: "dips" }];
+  const dispatch = useDispatch();
+
+  //Handle Inputs
   function onPressHandler() {
-    if (temp === "") return 0;
+    if (temp === "") return0;
     if (ingredients.length === 5) return 0;
     set_ingredients([...ingredients, temp]);
     set_temp("");
   }
-
+  //Handle Favorites Action
+  function addFav(props) {
+    dispatch(toggleFav(props));
+  }
+  //Call Api with ingredients provided
   async function startSearch() {
     dispatch(fetchResult(ingredients));
     setOpen(!open);
   }
-
+  //Render Page @Initial render & Change of Recipes
   useEffect(() => {
     console.log("useEffect rendered", recipes);
   }, [recipes]);
@@ -75,11 +84,35 @@ export default function Discover(navigation) {
             <Text> Hide </Text>
           </TouchableOpacity>
         </ScrollView>
-        {recipes
-          ? recipes.map((recipe, i) => {
-              return <Text key={i}>{recipe.title}</Text>;
-            })
-          : null}
+        {recipes ? (
+          <FlatList
+            data={recipes}
+            keyExtractor={(x, i) => i}
+            renderItem={({ item }) => (
+              <View style={styles.favItem}>
+                <Image
+                  source={{
+                    uri: item.image,
+                    width: 320,
+                    height: 200,
+                  }}
+                  style={styles.image}
+                  alt="oops"
+                />
+                <Text style={styles.favTitle}>{item.title}</Text>
+                <Text> number of likes: {item.likes}</Text>
+                <TouchableOpacity
+                  onPress={() => {
+                    addFav(item);
+                  }}
+                  style={styles.button}
+                >
+                  <Text>Favorites</Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          />
+        ) : null}
       </Modal>
     </View>
   );
@@ -92,7 +125,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   header: {
-    paddingTop: 40,
+    marginBottom: 80,
+    fontSize: 20,
   },
   ingredient: {
     borderColor: "black",
@@ -122,5 +156,31 @@ const styles = StyleSheet.create({
     marginTop: 10,
     height: 34,
     width: "25%",
+  },
+  favItem: {
+    borderWidth: 0.5,
+    borderColor: "black",
+    alignSelf: "center",
+    borderRadius: 5,
+    marginTop: 25,
+    width: 370,
+    padding: 10,
+  },
+  button: {
+    borderWidth: 0.5,
+    alignItems: "center",
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 5,
+  },
+  image: {
+    alignSelf: "center",
+    borderWidth: 0.5,
+    borderRadius: 10,
+  },
+  favTitle: {
+    margin: 10,
+    alignSelf: "center",
+    fontSize: 20,
   },
 });
