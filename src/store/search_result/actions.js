@@ -1,6 +1,7 @@
 import {
   spoonacular_daily,
   spoonacular_search,
+  spoonacular_recipe,
   key_1,
   key_2,
   key_3,
@@ -30,6 +31,18 @@ export const fetchResult = (ingredients) => {
     } catch (e) {
       dispatch(setMessage("danger", true, e.message));
       console.log("Something didnt go as planned inside", e);
+    }
+  };
+};
+
+export const fetchRecipe = (api_id) => {
+  return async (dispatch, getState) => {
+    dispatch(appDoneLoading());
+    try {
+      const recipe = await axios.get(`${spoonacular_recipe}/${api_id}/information&apiKey=${key_2}`);
+      console.log(recipe);
+    } catch (e) {
+      return console.log(e.message);
     }
   };
 };

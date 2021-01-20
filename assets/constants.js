@@ -4,6 +4,7 @@ export const apiUrl =
     : "http://192.168.178.171:4000";
 export const spoonacular_daily = "https://api.spoonacular.com/recipes/random";
 export const spoonacular_search = "https://api.spoonacular.com/recipes/findByIngredients";
+export const spoonacular_recipe = "https://api.spoonacular.com/recipes";
 export const Default_Message_Timeout = 3000;
 //limit of 150 api calls per day..
 export const key_1 = "3e01ce49b03e4eabbeaae3fd53764503";
