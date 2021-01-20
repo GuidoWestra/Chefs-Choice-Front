@@ -9,6 +9,10 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case "fav_added":
+      return { ...state, recipes: [...state.recipes, action.payload] };
+    case "fav_delete":
+      return { ...state, recipes: state.recipes.filter((recipe) => recipe.id !== action.payload) };
     case "Login_Succes":
       console.log("whut am i", action.payload);
       AsyncStorage.setItem("token", action.payload.token);

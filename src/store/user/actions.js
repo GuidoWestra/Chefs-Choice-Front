@@ -8,6 +8,18 @@ import {
   setMessage,
 } from "../appState/actions";
 import { useSelector } from "react-redux";
+export const favAdded = (payload) => {
+  return {
+    type: "fav_added",
+    payload: payload,
+  };
+};
+export const favDelete = (payload) => {
+  return {
+    type: "fav_delete",
+    payload: payload,
+  };
+};
 
 export const loginSucces = (userWithToken) => {
   return {
@@ -22,7 +34,6 @@ const tokenStillValid = (userWithoutToken) => {
     payload: userWithoutToken,
   };
 };
-
 export const logOut = () => ({ type: "Log_Out" });
 
 export const toggleFav = (recipe) => {
@@ -32,14 +43,18 @@ export const toggleFav = (recipe) => {
       const token = selectToken(getState());
       const { id } = recipe;
       console.log("inside store with recipe and id", id, token);
-      await axios.post(
+      const response = await axios.post(
         `${apiUrl}/favorites/toggle/${id}`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Succes recipe added:", apiUrl);
+      console.log("Message from back-e", response.data);
+      if (response.data.message === "Favorite Added") dispatch(favAdded(recipe));
+      if (response.data.message === "Favorite deleted") {
+        dispatch(favDelete(id));
+      }
     } catch (e) {
       console.log(e.message);
     }

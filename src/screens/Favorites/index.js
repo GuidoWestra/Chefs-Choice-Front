@@ -6,7 +6,7 @@ import { selectFav } from "../../store/user/selectors";
 export default function Favorites() {
   const fav = useSelector(selectFav);
 
-  useEffect(() => {}, [fav]);
+  useEffect(() => {}, []);
   return (
     <View style={styles.container}>
       <Text>Welcome To Favorites</Text>
