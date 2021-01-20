@@ -20,6 +20,12 @@ export const favDelete = (payload) => {
     payload: payload,
   };
 };
+export const favDelete2 = (payload) => {
+  return {
+    type: "fav_delete2",
+    payload: payload,
+  };
+};
 
 export const loginSucces = (userWithToken) => {
   return {
@@ -36,13 +42,31 @@ const tokenStillValid = (userWithoutToken) => {
 };
 export const logOut = () => ({ type: "Log_Out" });
 
+export const fetchFav = () => {
+  return async (dispatch, getState) => {
+    const token = selectToken(getState());
+    const response = await axios.get(
+      `${apiUrl}/favorites/list`,
+      {},
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
+  };
+};
+
 export const toggleFav = (recipe) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
     try {
       const token = selectToken(getState());
-      const { id } = recipe;
-      console.log("inside store with recipe and id", id, token);
+      let id = recipe.api_id;
+      if (id === undefined) id = recipe.id;
+      let title = recipe.title;
+      let image = recipe.image;
+
+      const recipe2 = [{ api_id: id }, { title: title }, { image: image }];
+      console.log("inside store with recipe and id", id, token, recipe2);
       const response = await axios.post(
         `${apiUrl}/favorites/toggle/${id}`,
         {},
@@ -50,10 +74,11 @@ export const toggleFav = (recipe) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Message from back-e", response.data);
+      console.log("Message from back-end", response.data);
       if (response.data.message === "Favorite Added") dispatch(favAdded(recipe));
       if (response.data.message === "Favorite deleted") {
         dispatch(favDelete(id));
+        dispatch(favDelete2(id));
       }
     } catch (e) {
       console.log(e.message);

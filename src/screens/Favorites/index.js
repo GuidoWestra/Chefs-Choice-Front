@@ -2,16 +2,18 @@ import React, { useEffect } from "react";
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFav } from "../../store/user/selectors";
-import { toggleFav } from "../../store/user/actions";
+import { fetchFav, toggleFav } from "../../store/user/actions";
 
 export default function Favorites() {
   const dispatch = useDispatch();
   const fav = useSelector(selectFav);
-
+  //on fav api_id
   async function onPressHandler(item) {
+    console.log(item);
     dispatch(toggleFav(item));
+    dispatch(fetchFav());
   }
-  useEffect(() => {}, []);
+  useEffect(() => {}, [fav]);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to your favorites </Text>
