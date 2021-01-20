@@ -7,3 +7,5 @@ export const spoonacular_search = "https://api.spoonacular.com/recipes/findByIng
 export const Default_Message_Timeout = 3000;
 export const key_1 = "3e01ce49b03e4eabbeaae3fd53764503";
 export const key_2 = "23fe5b3ccafd42cbb4d6c8919a46521f";
+export const key_3 = "896a4255c21e425d90b4450c75c7c2fd";
+export const key_4 = "";

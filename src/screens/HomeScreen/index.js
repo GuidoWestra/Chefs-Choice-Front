@@ -10,7 +10,7 @@ export default function HomeScreen() {
   const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
   const dispatch = useDispatch();
-
+  // recipe.id
   async function onPressHandler(recipe) {
     console.log("Added to Favorites", recipe);
     dispatch(toggleFav(recipe));
