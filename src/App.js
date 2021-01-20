@@ -9,7 +9,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Provider store={store}>
-        {/* <StatusBar style="auto" /> */}
+        <StatusBar style="auto" />
         <Navigation />
       </Provider>
     </View>

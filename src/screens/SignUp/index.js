@@ -18,7 +18,7 @@ export default function SignUp() {
   }
   return (
     <View style={styles.container}>
-      <Text>Welcome to the Sign Up Page</Text>
+      <Text style={styles.title}>Welcome to the Sign Up Page</Text>
       <TextInput
         style={styles.inputField}
         onChangeText={(text) => set_name(text)}
@@ -70,5 +70,10 @@ const styles = StyleSheet.create({
 
   signupLink: {
     marginTop: 500,
+  },
+  title: {
+    paddingTop: 10,
+    fontSize: 20,
+    fontWeight: "bold",
   },
 });
