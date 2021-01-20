@@ -4,7 +4,7 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case "set_result":
       console.log("Reducer Called with:", action.payload);
-      return [...state, ...action.payload];
+      return [...initialState, ...action.payload];
 
     default:
       return state;
