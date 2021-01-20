@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Modal,
   ScrollView,
+  Image,
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { login } from "../../store/user/actions";
@@ -60,7 +61,7 @@ export default function LogIn({ navigation }) {
           >
             <Text> Continue </Text>
           </TouchableOpacity>
-          <Text style={styles.title}>Welcome to Chef's Share!</Text>
+          <Text style={styles.title}>Welcome to Chef's Choice!</Text>
           <Text style={styles.body}>
             {"\n"}
             This is the app for you.. yes You! even though you might not have realized it. {"\n"}
@@ -83,9 +84,10 @@ export default function LogIn({ navigation }) {
             {"\n"}Favorites {"\n"}Saved ingredients. This is were the magic happens. All the cool
             recipes you find and save.. end up here.. Lets find out more! {"\n"}
             {"\n"}Account {"\n"}Have you finished using the app.. With the click of a button you can
-            simply log out! Thanks for downloading my app! {"\n"} {"\n"}Please let me know if you
+            simply log out! {"\n"} {"\n"}Thanks for downloading my app! Please let me know if you
             find any bugs, or have any cool ideas to add! {"\n"} {"\n"}--Chef
           </Text>
+          <Image style={styles.logo} source={require("../../../assets/logos/AppBase.jpg")} />
         </ScrollView>
       </Modal>
     </View>
@@ -129,18 +131,21 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   title: {
-    paddingTop: 10,
-    fontSize: 20,
+    paddingTop: 20,
+    fontSize: 22,
     fontWeight: "bold",
   },
   body: {
-    fontSize: 20,
-    paddingBottom: 25,
+    fontSize: 19,
   },
   Modal: {
     margin: 0.5,
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderRadius: 10,
     padding: 10,
+  },
+  logo: {
+    height: 200,
+    width: 400,
   },
 });
