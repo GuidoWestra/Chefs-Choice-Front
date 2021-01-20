@@ -37,9 +37,6 @@ export default function HomeScreen() {
       >
         <Text style={styles.title}>Add to Favorites</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity>
-        <Text> find out more</Text>
-      </TouchableOpacity> */}
     </View>
   );
 }
