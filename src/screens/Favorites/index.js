@@ -29,7 +29,12 @@ export default function Favorites() {
     setOpen(!open);
   }
   useEffect(() => {}, [recipe]);
-  if (!recipe) return <Text>No recipes liked yet!</Text>;
+  if (!recipe)
+    return (
+      <View>
+        <Text>No recipes liked yet!</Text>
+      </View>
+    );
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to your favorites </Text>
@@ -39,7 +44,7 @@ export default function Favorites() {
         renderItem={({ item }) => (
           <View style={styles.favItem}>
             <Image
-              styles={styles.picture}
+              style={styles.picture}
               source={{
                 uri: item.image,
                 width: 350,
@@ -98,6 +103,9 @@ export default function Favorites() {
             {recipe.instructions !== undefined ? (
               <Text style={styles.infoBox}>{recipe.instructions.replace(/<[^>]*>?/gm, "")}</Text>
             ) : null}
+            {recipe.summary !== undefined ? (
+              <Text style={styles.infoBox}>{recipe.summary.replace(/<[^>]*>?/gm, "")}</Text>
+            ) : null}
             {/* <Text>{recipe.sourceUrl}</Text> */}
           </ScrollView>
         </View>
@@ -114,10 +122,11 @@ const styles = StyleSheet.create({
   favItem: {
     borderWidth: 0.5,
     borderColor: "black",
-    borderRadius: 3,
+    borderRadius: 7,
     marginTop: 25,
     alignSelf: "center",
     margin: 10,
+    width: "95%",
     // padding: 5,
   },
   title: {
@@ -130,7 +139,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   picture: {
-    borderWidth: 1,
+    margin: 5,
+    borderWidth: 5,
     borderRadius: 10,
     alignSelf: "center",
   },

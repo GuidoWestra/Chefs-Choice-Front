@@ -25,7 +25,7 @@ export default function Discover() {
 
   //Handle Inputs
   function onPressHandler() {
-    if (temp === "") return0;
+    if (temp === "") return 0;
     if (ingredients.length === 5) return 0;
     set_ingredients([...ingredients, temp]);
     set_temp("");
@@ -36,6 +36,7 @@ export default function Discover() {
   }
   //Call Api with ingredients provided
   async function startSearch() {
+    if (ingredients === "") return 0;
     dispatch(fetchResult(ingredients));
     setOpen(!open);
   }
@@ -72,7 +73,12 @@ export default function Discover() {
 
       <Modal visible={open} animationType="slide">
         <View style={styles.searchHeader}>
-          <Text style={styles.favTitle}>Search Results</Text>
+          <Text style={styles.favTitle}>Search Results for</Text>
+          <Text>{ingredients[0]}</Text>
+          <Text>{ingredients[1] || null}</Text>
+          <Text>{ingredients[2] || null}</Text>
+          <Text>{ingredients[3] || null}</Text>
+          <Text>{ingredients[4] || null}</Text>
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
