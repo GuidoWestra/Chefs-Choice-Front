@@ -48,10 +48,10 @@ Demo video: https://youtu.be/77w8T94SB4o<br />
 :wrench: Working on apk download link!
 
 Instalation steps: 
-clone the repo to your device using:  git clone <link> <your project name>
-change directory to the cloned repo:  cd <your project name> 
-install all dependencies using:       npm install
-start expo using:                     npm start
+clone the repo to your device using:  git clone <link> <your project name>  <br />
+change directory to the cloned repo:  cd <your project name> <br />
+install all dependencies using:       npm install<br />
+start expo using:                     npm start<br />
 
 
 <img align="left" alt="css logo" width="26px" src="https://cdn.iconscout.com/icon/free/png-512/css-118-569410.png"/>
