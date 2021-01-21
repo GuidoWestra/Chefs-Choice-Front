@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Button, TextInput, StyleSheet, TouchableOpacity } from "react-native";
-import { useDispatch } from "react-redux";
-import { login, signUp } from "../../store/user/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { signUp, login } from "../../store/user/actions";
 
 export default function SignUp() {
   const [name, set_name] = useState("");

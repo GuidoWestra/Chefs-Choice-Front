@@ -40,9 +40,7 @@ export default function Discover() {
     setOpen(!open);
   }
   //Render Page @Initial render & Change of Recipes
-  useEffect(() => {
-    console.log("useEffect rendered", recipes);
-  }, [recipes]);
+  useEffect(() => {}, [recipes]);
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Please Enter Ingredients:</Text>

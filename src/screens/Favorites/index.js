@@ -20,14 +20,11 @@ export default function Favorites() {
   const dispatch = useDispatch();
   const recipe = useSelector(selectRecipe);
   const fav = useSelector(selectFav);
-  console.log("on fav page", recipe);
 
   async function onPressFavorite(item) {
-    console.log(item);
     dispatch(toggleFav(item));
   }
   async function onPressRecipe(item) {
-    console.log("inside recipe", item);
     dispatch(fetchRecipe(item));
     setOpen(!open);
   }
@@ -117,11 +114,11 @@ const styles = StyleSheet.create({
   favItem: {
     borderWidth: 0.5,
     borderColor: "black",
-    borderRadius: 5,
+    borderRadius: 3,
     marginTop: 25,
     alignSelf: "center",
     margin: 10,
-    padding: 5,
+    // padding: 5,
   },
   title: {
     marginTop: 30,
@@ -142,7 +139,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 10,
     borderRadius: 10,
-    marginTop: 6,
+    margin: 6,
     width: "50%",
   },
   favText: {

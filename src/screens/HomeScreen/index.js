@@ -12,7 +12,6 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
   // recipe.id
   async function onPressHandler(recipe) {
-    console.log("Added to Favorites", recipe);
     dispatch(toggleFav(recipe));
   }
 

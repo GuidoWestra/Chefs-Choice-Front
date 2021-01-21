@@ -14,12 +14,10 @@ export const fetchDaily = () => {
     dispatch(appLoading());
     try {
       const response = await axios.get(`${spoonacular_daily}?apiKey=${key_3}`);
-      // console.log("inside Fetch", response.data.recipes[0]);
       dispatch(set_daily(response.data.recipes[0]));
       dispatch(appDoneLoading());
     } catch (e) {
       dispatch(setMessage("danger", true, e.message));
-      console.log("Something didnt go as planned inside recipe-actions");
     }
   };
 };

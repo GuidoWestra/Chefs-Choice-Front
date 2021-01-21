@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { selectMessage } from "../../store/appState/selectors";
 import {
   View,
   Text,
@@ -10,7 +11,7 @@ import {
   ScrollView,
   Image,
 } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../store/user/actions";
 
 export default function LogIn({ navigation }) {
@@ -19,6 +20,9 @@ export default function LogIn({ navigation }) {
   const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
 
+  // const message = useSelector(selectMessage);
+  // if (message) console.log("I am message on home", message.text.response.data.message);
+
   function submitLogin(event) {
     event.preventDefault();
     dispatch(login(email, password));
@@ -26,7 +30,6 @@ export default function LogIn({ navigation }) {
     set_email("");
     set_password("");
   }
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to the LoginPage</Text>

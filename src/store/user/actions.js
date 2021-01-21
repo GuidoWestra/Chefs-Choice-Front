@@ -70,7 +70,6 @@ export const toggleFav = (recipe) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      console.log("Message from back-end", response.data);
       if (response.data.message === "Favorite Added") dispatch(favAdded(recipe));
       if (response.data.message === "Favorite deleted") {
         dispatch(favDelete(id));
@@ -98,10 +97,9 @@ export const signUp = (name, email, password) => {
     } catch (e) {
       if (e.response) {
         console.log(e.response.data.message);
-        dispatch(setMessage("danger", true, e.response.data.message));
+        dispatch(showMessageWithTimeout("danger", true, e.response.data.message));
       } else {
-        console.log(e.message);
-        dispatch(setMessage("danger", true, e.message));
+        dispatch(showMessageWithTimeout("danger", true, e.message));
       }
       dispatch(appDoneLoading());
     }
@@ -121,11 +119,9 @@ export const login = (email, password) => {
       dispatch(appDoneLoading());
     } catch (e) {
       if (e.message) {
-        console.log(e.message);
-        dispatch(setMessage("danger", true, e));
+        dispatch(showMessageWithTimeout("danger", true, e));
       } else {
-        console.log("Oops");
-        dispatch(setMessage("danger", true, e));
+        dispatch(showMessageWithTimeout("danger", true, e));
       }
       dispatch(appDoneLoading());
     }

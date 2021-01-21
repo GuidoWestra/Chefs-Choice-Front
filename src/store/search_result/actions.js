@@ -31,12 +31,10 @@ export const fetchResult = (ingredients) => {
       const response = await axios.get(
         `${spoonacular_search}?ingredients=${api_ingredients}&number=5&apiKey=${key_2}`
       );
-      console.log("This is response", response);
       dispatch(set_result(response.data));
       dispatch(appDoneLoading());
     } catch (e) {
       dispatch(setMessage("danger", true, e.message));
-      console.log("Something didnt go as planned inside", e);
     }
   };
 };
@@ -47,9 +45,7 @@ export const fetchRecipe = (recipe) => {
     let id = recipe.api_id;
     if (id === undefined) id = recipe.id;
     try {
-      console.log("api_id check:", id);
       const recipe = await axios.get(`${spoonacular_recipe}/${id}/information?apiKey=${key_2}`);
-      console.log("fetching one", recipe);
       dispatch(set_recipe(recipe.data));
     } catch (e) {
       return console.log(e.message);

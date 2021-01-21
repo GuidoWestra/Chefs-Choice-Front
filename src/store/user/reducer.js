@@ -24,7 +24,6 @@ export default (state = initialState, action) => {
       };
 
     case "Login_Succes":
-      console.log("whut am i", action.payload);
       AsyncStorage.setItem("token", action.payload.token);
       return { ...state, ...action.payload };
 
