@@ -47,7 +47,7 @@ Demo video: https://youtu.be/77w8T94SB4o<br />
 
 :wrench: Working on apk download link!
 
-Instalation steps: 
+# Instalation steps: 
 - clone the repo to your device using:  git clone <link> <your project name>  <br />
 - change directory to the cloned repo:  cd <your project name> <br />
 - install all dependencies using:       npm install<br />
