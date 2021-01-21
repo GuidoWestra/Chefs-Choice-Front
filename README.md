@@ -43,7 +43,7 @@ WireFrames: https://builderx.io/app/l3p1rfrllz40c08kog8w408og00wk0 <br />
 ProjectBoard: https://github.com/users/GuidoWestra/projects/1 <br />
 Model: https://dbdiagram.io/d/5ffec5ac80d742080a362421 <br />
 Back-end: https://github.com/GuidoWestra/Chefs-Choice-Back <br />
-Demo video: <br />
+Demo video: https://youtu.be/77w8T94SB4o<br />
 
 :wrench: Working on apk download link!
 
