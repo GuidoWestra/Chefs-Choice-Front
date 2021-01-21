@@ -62,11 +62,7 @@ export const toggleFav = (recipe) => {
       const token = selectToken(getState());
       let id = recipe.api_id;
       if (id === undefined) id = recipe.id;
-      let title = recipe.title;
-      let image = recipe.image;
 
-      const recipe2 = [{ api_id: id }, { title: title }, { image: image }];
-      console.log("inside store with recipe and id", id, token, recipe2);
       const response = await axios.post(
         `${apiUrl}/favorites/toggle/${id}`,
         {},

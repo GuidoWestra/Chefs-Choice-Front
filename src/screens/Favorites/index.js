@@ -1,19 +1,37 @@
-import React, { useEffect } from "react";
-import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  Image,
+  TouchableOpacity,
+  Modal,
+  ScrollView,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFav } from "../../store/user/selectors";
-import { fetchFav, toggleFav } from "../../store/user/actions";
+import { toggleFav } from "../../store/user/actions";
+import { fetchRecipe } from "../../store/search_result/actions";
+import { selectResult, selectRecipe } from "../../store/search_result/selectors";
 
 export default function Favorites() {
+  const [open, setOpen] = useState(false);
   const dispatch = useDispatch();
+  const recipe = useSelector(selectRecipe);
   const fav = useSelector(selectFav);
-  //on fav api_id
-  async function onPressHandler(item) {
+  console.log("on fav page", recipe);
+
+  async function onPressFavorite(item) {
     console.log(item);
     dispatch(toggleFav(item));
-    dispatch(fetchFav());
   }
-  useEffect(() => {}, [fav]);
+  async function onPressRecipe(item) {
+    console.log("inside recipe", item);
+    dispatch(fetchRecipe(item));
+    setOpen(!open);
+  }
+  useEffect(() => {}, [recipe]);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to your favorites </Text>
@@ -32,18 +50,53 @@ export default function Favorites() {
               alt="oops"
             />
             <Text style={styles.favTitle}>{item.title}</Text>
-
             <TouchableOpacity
               onPress={() => {
-                onPressHandler(item);
+                onPressFavorite(item);
               }}
               style={styles.button}
             >
-              <Text> Remove from Favorites</Text>
+              <Text> Remove </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                onPressRecipe(item);
+              }}
+              style={styles.button}
+            >
+              <Text> Show me the Recipe!</Text>
             </TouchableOpacity>
           </View>
         )}
       />
+      <Modal visible={open} animationType="fade">
+        <View style={styles.container}>
+          <TouchableOpacity
+            style={styles.modalButton}
+            onPress={() => {
+              setOpen(!open);
+            }}
+          >
+            <Text style={styles.button}> Return to favorites </Text>
+          </TouchableOpacity>
+
+          <ScrollView style={styles.favItem}>
+            <Image
+              source={{
+                uri: recipe.image,
+                width: 320,
+                height: 200,
+              }}
+              style={styles.picture}
+              alt="oops"
+            />
+            <Text style={styles.favTitle}>hi{recipe.title}</Text>
+            <Text> {recipe.instructions}</Text>
+            <Text> {recipe.summary}</Text>
+            <Text>{recipe.sourceUrl}</Text>
+          </ScrollView>
+        </View>
+      </Modal>
     </View>
   );
 }
@@ -63,8 +116,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   title: {
-    marginTop: 25,
-    fontSize: 20,
+    marginTop: 30,
+    fontSize: 24,
   },
   favTitle: {
     margin: 10,

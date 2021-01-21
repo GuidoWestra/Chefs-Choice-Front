@@ -17,6 +17,12 @@ const set_result = (result) => {
     payload: result,
   };
 };
+const set_recipe = (result) => {
+  return {
+    type: "set_recipe",
+    payload: result,
+  };
+};
 export const fetchResult = (ingredients) => {
   return async (dispatch, getState) => {
     dispatch(appLoading());
@@ -35,12 +41,16 @@ export const fetchResult = (ingredients) => {
   };
 };
 
-export const fetchRecipe = (api_id) => {
+export const fetchRecipe = (recipe) => {
   return async (dispatch, getState) => {
     dispatch(appDoneLoading());
+    let id = recipe.api_id;
+    if (id === undefined) id = recipe.id;
     try {
-      const recipe = await axios.get(`${spoonacular_recipe}/${api_id}/information&apiKey=${key_2}`);
-      console.log(recipe);
+      console.log("api_id check:", id);
+      const recipe = await axios.get(`${spoonacular_recipe}/${id}/information?apiKey=${key_2}`);
+      console.log("fetching one", recipe);
+      dispatch(set_recipe(recipe.data));
     } catch (e) {
       return console.log(e.message);
     }
