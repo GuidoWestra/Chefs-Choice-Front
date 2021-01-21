@@ -31,6 +31,7 @@ export default function HomeScreen() {
       />
       <Text style={styles.title}>{recipe.title}</Text>
       <TouchableOpacity
+        style={styles.button}
         onPress={() => {
           onPressHandler(recipe);
         }}
@@ -47,24 +48,30 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    borderWidth: 0.4,
+    borderWidth: 0.5,
     borderColor: "grey",
-    borderRadius: 25,
-    marginTop: 100,
-    marginLeft: 5,
+    borderRadius: 10,
+    marginTop: 50,
+    alignSelf: "center",
     width: 400,
-    height: 600,
+    height: 550,
   },
   title: {
     fontSize: 20,
     color: "black",
   },
+  button: {
+    alignSelf: "center",
+    backgroundColor: "#E6E6E6",
+    borderRadius: 10,
+    marginTop: 20,
+    padding: 5,
+  },
   picture: {
-    paddingBottom: 20,
     borderWidth: 0,
     borderColor: "black",
     borderRadius: 10,
     width: "95%",
-    height: "75%",
+    height: "80%",
   },
 });

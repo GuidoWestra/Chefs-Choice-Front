@@ -73,17 +73,17 @@ export default function Discover() {
       </TouchableOpacity>
 
       <Modal visible={open} animationType="slide">
-        <ScrollView>
-          <Text>Search Results</Text>
+        <View style={styles.searchHeader}>
+          <Text style={styles.favTitle}>Search Results</Text>
           <TouchableOpacity
-            style={styles.inputButton}
+            style={styles.button}
             onPress={() => {
               setOpen(!open);
             }}
           >
             <Text> Hide </Text>
           </TouchableOpacity>
-        </ScrollView>
+        </View>
         {recipes ? (
           <FlatList
             data={recipes}
@@ -100,7 +100,7 @@ export default function Discover() {
                   alt="oops"
                 />
                 <Text style={styles.favTitle}>{item.title}</Text>
-                <Text> number of likes: {item.likes}</Text>
+                <Text style={styles.likes}> ❤️ {item.likes}</Text>
                 <TouchableOpacity
                   onPress={() => {
                     addFav(item);
@@ -183,4 +183,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     fontSize: 20,
   },
+  searchHeader: {
+    alignSelf: "center",
+  },
+  likes: {},
 });
