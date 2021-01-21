@@ -39,3 +39,7 @@ Thanks for downloading my app! and please let me know if you find any bugs,
 or have any cool ideas to add! 
 
 --Chef 
+WireFrames: https://builderx.io/app/l3p1rfrllz40c08kog8w408og00wk0 <br />
+ProjectBoard: https://github.com/users/GuidoWestra/projects/1 <br />
+Model: https://dbdiagram.io/d/5ffec5ac80d742080a362421 <br />
+Back-end: https://github.com/GuidoWestra/Chefs-Choice-Back
