@@ -37,6 +37,7 @@ simply log out!
 
 Thanks for downloading my app! and please let me know if you find any bugs,
 or have any cool ideas to add! 
+<br />
 
 --Chef <br />
 <br />
