@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Modal,
   ScrollView,
+  Linking,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { selectFav } from "../../store/user/selectors";
@@ -100,13 +101,21 @@ export default function Favorites() {
             </Text>
             <Text>{recipe.vegetarian ? "This dish is Vegetarian" : null}</Text>
 
-            {recipe.instructions !== undefined ? (
-              <Text style={styles.infoBox}>{recipe.instructions.replace(/<[^>]*>?/gm, "")}</Text>
-            ) : null}
             {recipe.summary !== undefined ? (
               <Text style={styles.infoBox}>{recipe.summary.replace(/<[^>]*>?/gm, "")}</Text>
             ) : null}
-            {/* <Text>{recipe.sourceUrl}</Text> */}
+            {recipe.instructions !== undefined ? (
+              <Text style={styles.infoBox}>{recipe.instructions.replace(/<[^>]*>?/gm, "")}</Text>
+            ) : null}
+            <TouchableOpacity
+              onPress={() => {
+                Linking.openURL(recipe.sourceUrl);
+              }}
+            >
+              {recipe.sourceUrl !== undefined ? (
+                <Text style={styles.infoBox}>{recipe.sourceUrl}</Text>
+              ) : null}
+            </TouchableOpacity>
           </ScrollView>
         </View>
       </Modal>
@@ -157,8 +166,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   infoBox: {
-    borderWidth: 1,
+    borderWidth: 0.5,
     borderRadius: 10,
+    margin: 0.1,
     padding: 5,
   },
 });
