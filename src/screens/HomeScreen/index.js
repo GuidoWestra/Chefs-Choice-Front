@@ -20,6 +20,7 @@ export default function HomeScreen() {
     dispatch(fetchDaily());
   }, []);
 
+  if (!recipe) return <Text> Loading...</Text>;
   return (
     <View style={styles.container}>
       <Image
@@ -30,6 +31,9 @@ export default function HomeScreen() {
         alt="oops"
       />
       <Text style={styles.title}>{recipe.title}</Text>
+      {recipe.summary !== undefined ? (
+        <Text style={styles.text}>{recipe.summary.replace(/<[^>]*>?/gm, "")}</Text>
+      ) : null}
       <TouchableOpacity
         style={styles.button}
         onPress={() => {
@@ -52,12 +56,17 @@ const styles = StyleSheet.create({
     borderColor: "grey",
     borderRadius: 10,
     marginTop: 50,
+    padding: 10,
     alignSelf: "center",
     width: 400,
-    height: 550,
+    height: 600,
   },
   title: {
     fontSize: 20,
+    color: "black",
+  },
+  text: {
+    fontSize: 13,
     color: "black",
   },
   button: {
@@ -71,7 +80,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: "black",
     borderRadius: 10,
-    width: "95%",
-    height: "80%",
+    width: "100%",
+    height: "50%",
   },
 });

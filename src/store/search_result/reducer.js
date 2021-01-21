@@ -1,4 +1,4 @@
-const initialState = [{ title: null, image: null }];
+const initialState = [{ title: null, image: null, summary: "", instructions: "" }];
 export default (state = initialState, action) => {
   console.log("reducer called");
   switch (action.type) {

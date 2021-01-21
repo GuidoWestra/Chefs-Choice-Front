@@ -32,6 +32,7 @@ export default function Favorites() {
     setOpen(!open);
   }
   useEffect(() => {}, [recipe]);
+  if (!recipe) return <Text>No recipes liked yet!</Text>;
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to your favorites </Text>
@@ -44,8 +45,8 @@ export default function Favorites() {
               styles={styles.picture}
               source={{
                 uri: item.image,
-                width: 320,
-                height: 200,
+                width: 350,
+                height: 250,
               }}
               alt="oops"
             />
@@ -90,10 +91,17 @@ export default function Favorites() {
               style={styles.picture}
               alt="oops"
             />
-            <Text style={styles.favTitle}>hi{recipe.title}</Text>
-            <Text> {recipe.instructions}</Text>
-            <Text> {recipe.summary}</Text>
-            <Text>{recipe.sourceUrl}</Text>
+
+            <Text style={styles.favTitle}>{recipe.title}</Text>
+            <Text style={styles.favText}>
+              Price per serving: {recipe.pricePerServing}${"\n"}
+            </Text>
+            <Text>{recipe.vegetarian ? "This dish is Vegetarian" : null}</Text>
+
+            {recipe.instructions !== undefined ? (
+              <Text style={styles.infoBox}>{recipe.instructions.replace(/<[^>]*>?/gm, "")}</Text>
+            ) : null}
+            {/* <Text>{recipe.sourceUrl}</Text> */}
           </ScrollView>
         </View>
       </Modal>
@@ -111,9 +119,9 @@ const styles = StyleSheet.create({
     borderColor: "black",
     borderRadius: 5,
     marginTop: 25,
-    marginLeft: 5,
-    width: 370,
-    padding: 10,
+    alignSelf: "center",
+    margin: 10,
+    padding: 5,
   },
   title: {
     marginTop: 30,
@@ -126,13 +134,24 @@ const styles = StyleSheet.create({
   },
   picture: {
     borderWidth: 1,
-    borderRadius: 45,
+    borderRadius: 10,
+    alignSelf: "center",
   },
   button: {
     borderWidth: 0.5,
     alignItems: "center",
     padding: 10,
     borderRadius: 10,
-    marginTop: 5,
+    marginTop: 6,
+    width: "50%",
+  },
+  favText: {
+    alignSelf: "center",
+    fontSize: 16,
+  },
+  infoBox: {
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 5,
   },
 });
