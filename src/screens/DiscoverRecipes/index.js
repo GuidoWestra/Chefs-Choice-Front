@@ -74,6 +74,11 @@ export default function Discover() {
       </TouchableOpacity>
 
       <Modal visible={open} animationType="slide">
+        {message ? (
+          <View style={styles.succes}>
+            <Text style={styles.succesText}>{message.text}</Text>
+          </View>
+        ) : null}
         <View style={styles.searchHeader}>
           <Text style={styles.favTitle}>Search Results for</Text>
           <Text>{ingredients[0]}</Text>
@@ -90,11 +95,6 @@ export default function Discover() {
             <Text> Hide </Text>
           </TouchableOpacity>
         </View>
-        {message ? (
-          <View style={styles.succes}>
-            <Text style={styles.succesText}>{message.text}</Text>
-          </View>
-        ) : null}
         {recipes ? (
           <FlatList
             data={recipes}
