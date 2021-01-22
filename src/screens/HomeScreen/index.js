@@ -8,16 +8,13 @@ import { toggleFav } from "../../store/user/actions";
 import { selectUser } from "../../store/user/selectors";
 
 export default function HomeScreen() {
-  const user = useSelector(selectUser);
   const recipe = useSelector(selectDaily);
+  const message = useSelector(selectMessage);
   const dispatch = useDispatch();
   // recipe.id
   async function onPressHandler(recipe) {
     dispatch(toggleFav(recipe));
   }
-
-  const message = useSelector(selectMessage);
-  if (message) console.log("I am message on home", message.text);
 
   useEffect(() => {
     dispatch(fetchDaily());

@@ -14,12 +14,14 @@ import { selectResult } from "../../store/search_result/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchResult } from "../../store/search_result/actions";
 import { toggleFav } from "../../store/user/actions";
+import { selectMessage } from "../../store/appState/selectors";
 
 export default function Discover() {
   const [ingredients, set_ingredients] = useState("");
   const [temp, set_temp] = useState("");
   const [open, setOpen] = useState(false);
 
+  const message = useSelector(selectMessage);
   const recipes = useSelector(selectResult);
   const dispatch = useDispatch();
 
@@ -75,10 +77,10 @@ export default function Discover() {
         <View style={styles.searchHeader}>
           <Text style={styles.favTitle}>Search Results for</Text>
           <Text>{ingredients[0]}</Text>
-          <Text>{ingredients[1] || null}</Text>
-          <Text>{ingredients[2] || null}</Text>
-          <Text>{ingredients[3] || null}</Text>
-          <Text>{ingredients[4] || null}</Text>
+          {ingredients[1] ? <Text>{ingredients[1]}</Text> : null}
+          {ingredients[2] ? <Text>{ingredients[2]}</Text> : null}
+          {ingredients[3] ? <Text>{ingredients[3]}</Text> : null}
+          {ingredients[4] ? <Text>{ingredients[4]}</Text> : null}
           <TouchableOpacity
             style={styles.button}
             onPress={() => {
@@ -88,6 +90,11 @@ export default function Discover() {
             <Text> Hide </Text>
           </TouchableOpacity>
         </View>
+        {message ? (
+          <View style={styles.succes}>
+            <Text style={styles.succesText}>{message.text}</Text>
+          </View>
+        ) : null}
         {recipes ? (
           <FlatList
             data={recipes}
@@ -185,5 +192,16 @@ const styles = StyleSheet.create({
   searchHeader: {
     alignSelf: "center",
   },
-  likes: {},
+  succes: {
+    borderWidth: 1,
+    borderRadius: 15,
+    marginTop: 25,
+    margin: 15,
+    borderColor: "white",
+    padding: 5,
+    backgroundColor: "#77c593",
+  },
+  succesText: {
+    color: "white",
+  },
 });
