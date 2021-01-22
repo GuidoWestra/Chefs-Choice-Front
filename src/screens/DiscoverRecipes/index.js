@@ -17,14 +17,21 @@ import { toggleFav } from "../../store/user/actions";
 import { selectMessage } from "../../store/appState/selectors";
 
 export default function Discover() {
-  const [ingredients, set_ingredients] = useState("");
+  const [ingredients, set_ingredients] = useState([]);
   const [temp, set_temp] = useState("");
   const [open, setOpen] = useState(false);
 
   const message = useSelector(selectMessage);
   const recipes = useSelector(selectResult);
   const dispatch = useDispatch();
-
+  //removeFav
+  function removeFav(i) {
+    const j = i + 1;
+    ingredients.splice(i, 1);
+    const newIngredients = ingredients;
+    set_ingredients([...newIngredients]);
+    console.log("HI", ingredients);
+  }
   //Handle Inputs
   function onPressHandler() {
     if (temp === "") return 0;
@@ -50,9 +57,11 @@ export default function Discover() {
       {ingredients
         ? ingredients.map((name, i) => {
             return (
-              <Text key={i} style={styles.ingredient}>
-                {name}
-              </Text>
+              <TouchableOpacity onPress={() => removeFav(i)}>
+                <Text key={i} style={styles.ingredient}>
+                  {name}
+                </Text>
+              </TouchableOpacity>
             );
           })
         : null}
