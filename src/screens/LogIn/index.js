@@ -20,8 +20,8 @@ export default function LogIn({ navigation }) {
   const [open, setOpen] = useState(true);
   const dispatch = useDispatch();
 
-  // const message = useSelector(selectMessage);
-  // if (message) console.log("I am message on home", message.text.response.data.message);
+  const message = useSelector(selectMessage);
+  if (message) console.log("I am message on home", message);
 
   function submitLogin(event) {
     event.preventDefault();
@@ -32,6 +32,11 @@ export default function LogIn({ navigation }) {
   }
   return (
     <View style={styles.container}>
+      {message ? (
+        <View style={styles.error}>
+          <Text style={styles.errorText}>{message.text}</Text>
+        </View>
+      ) : null}
       <Text style={styles.title}>Welcome to the LoginPage</Text>
       <TextInput
         style={styles.inputField}
@@ -150,5 +155,16 @@ const styles = StyleSheet.create({
   logo: {
     height: 200,
     width: 400,
+  },
+  error: {
+    borderWidth: 1,
+    borderRadius: 15,
+    color: "#cc0033",
+    borderColor: "#fcc2c3",
+    padding: 5,
+    backgroundColor: "#fce4e4",
+  },
+  errorText: {
+    color: "#ff4040",
   },
 });

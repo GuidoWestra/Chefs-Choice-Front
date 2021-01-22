@@ -70,7 +70,10 @@ export const toggleFav = (recipe) => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      if (response.data.message === "Favorite Added") dispatch(favAdded(recipe));
+      if (response.data.message === "Favorite Added") {
+        dispatch(favAdded(recipe));
+        dispatch(showMessageWithTimeout("success", true, response.data.message));
+      }
       if (response.data.message === "Favorite deleted") {
         dispatch(favDelete(id));
         dispatch(favDelete2(id));
@@ -95,11 +98,11 @@ export const signUp = (name, email, password) => {
       dispatch(appDoneLoading());
       dispatch(login(email, password));
     } catch (e) {
-      if (e.response) {
-        console.log(e.response.data.message);
+      if (e.message) {
+        console.log("Error in actions", e);
         dispatch(showMessageWithTimeout("danger", true, e.response.data.message));
       } else {
-        dispatch(showMessageWithTimeout("danger", true, e.message));
+        dispatch(showMessageWithTimeout("danger", true, e));
       }
       dispatch(appDoneLoading());
     }
@@ -119,7 +122,8 @@ export const login = (email, password) => {
       dispatch(appDoneLoading());
     } catch (e) {
       if (e.message) {
-        dispatch(showMessageWithTimeout("danger", true, e));
+        console.log("Error in actions", e.response.data.message);
+        dispatch(showMessageWithTimeout("danger", true, e.response.data.message));
       } else {
         dispatch(showMessageWithTimeout("danger", true, e));
       }
@@ -151,3 +155,4 @@ export const getUserWithToken = () => {
     }
   };
 };
+/* fix redux savings from back end */

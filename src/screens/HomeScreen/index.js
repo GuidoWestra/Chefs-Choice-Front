@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image, TouchableOpacity } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
+import { selectMessage } from "../../store/appState/selectors";
 import { fetchDaily } from "../../store/daily_recipe/actions";
 import { selectDaily } from "../../store/daily_recipe/selectors";
 import { toggleFav } from "../../store/user/actions";
@@ -15,32 +16,42 @@ export default function HomeScreen() {
     dispatch(toggleFav(recipe));
   }
 
+  const message = useSelector(selectMessage);
+  if (message) console.log("I am message on home", message.text);
+
   useEffect(() => {
     dispatch(fetchDaily());
   }, []);
 
   if (!recipe) return <Text> Loading...</Text>;
   return (
-    <View style={styles.container}>
-      <Image
-        style={styles.picture}
-        source={{
-          uri: recipe.image || null,
-        }}
-        alt="oops"
-      />
-      <Text style={styles.title}>{recipe.title}</Text>
-      {recipe.summary !== undefined ? (
-        <Text style={styles.text}>{recipe.summary.replace(/<[^>]*>?/gm, "")}</Text>
+    <View>
+      {message ? (
+        <View style={styles.succes}>
+          <Text style={styles.succesText}>{message.text}</Text>
+        </View>
       ) : null}
-      <TouchableOpacity
-        style={styles.button}
-        onPress={() => {
-          onPressHandler(recipe);
-        }}
-      >
-        <Text style={styles.title}>Add to Favorites</Text>
-      </TouchableOpacity>
+      <View style={styles.container}>
+        <Image
+          style={styles.picture}
+          source={{
+            uri: recipe.image || null,
+          }}
+          alt="oops"
+        />
+        <Text style={styles.title}>{recipe.title}</Text>
+        {recipe.summary !== undefined ? (
+          <Text style={styles.text}>{recipe.summary.replace(/<[^>]*>?/gm, "")}</Text>
+        ) : null}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => {
+            onPressHandler(recipe);
+          }}
+        >
+          <Text style={styles.title}>Add to Favorites</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
@@ -81,5 +92,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: "100%",
     height: "50%",
+  },
+  succes: {
+    borderWidth: 1,
+    borderRadius: 15,
+    marginTop: 25,
+    margin: 15,
+    borderColor: "white",
+    padding: 5,
+    backgroundColor: "#77c593",
+  },
+  succesText: {
+    color: "white",
   },
 });
