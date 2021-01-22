@@ -59,7 +59,7 @@ export default function Discover() {
             return (
               <TouchableOpacity onPress={() => removeFav(i)}>
                 <Text key={i} style={styles.ingredient}>
-                  {name}
+                  ✖️ {name}
                 </Text>
               </TouchableOpacity>
             );
@@ -151,15 +151,15 @@ const styles = StyleSheet.create({
   ingredient: {
     borderColor: "black",
     borderWidth: 0.5,
-    padding: 10,
-    borderRadius: 10,
+    padding: 5,
+    borderRadius: 15,
   },
   inputField: {
-    marginTop: 100,
+    marginTop: 90,
     borderColor: "black",
     borderWidth: 0.5,
     borderRadius: 4,
-    height: "5%",
+    height: 34,
     width: "50%",
   },
   inputButton: {
