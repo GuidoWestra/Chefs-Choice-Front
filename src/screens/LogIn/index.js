@@ -56,7 +56,7 @@ export default function LogIn({ navigation }) {
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.push("SignUp")}>
-        <Text style={styles.signupLink}> Dont have an accout?</Text>
+        <Text style={styles.signupLink}> Dont have an account?</Text>
       </TouchableOpacity>
 
       <Modal visible={open} animationType="fade">
