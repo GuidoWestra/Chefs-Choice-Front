@@ -49,10 +49,11 @@ Back-end: https://github.com/GuidoWestra/Chefs-Choice-Back <br />
 Demo video: https://youtu.be/77w8T94SB4o<br />
 :wrench: Working on apk download link!
 # Screenshots!
-<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/1.jpeg" width="400" height="800" alt="screenshot">
-<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/2.jpeg" width="400" height="800" alt="screenshot">
-<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/3.jpeg" width="400" height="800" alt="screenshot">
-<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/4.jpeg" width="400" height="800" alt="screenshot"> <br />
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/1.jpeg" width="400" height="800" alt="screenshot" />
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/2.jpeg" width="400" height="800" alt="screenshot" />
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/3.jpeg" width="400" height="800" alt="screenshot" />
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/4.jpeg" width="400" height="800" alt="screenshot" /> <br />
+
 # Instalation steps: <br />
 - clone the repo to your device using:  git clone <link> <your project name>  <br />
 - change directory to the cloned repo:  cd <your project name> <br />
