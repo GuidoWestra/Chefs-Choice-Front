@@ -39,7 +39,7 @@ Thanks for downloading my app! and please let me know if you find any bugs,
 or have any cool ideas to add! 
 <br />
 
---Chef <br />
+--Chef-- <br />
 <br />
 <br />
 WireFrames: https://builderx.io/app/l3p1rfrllz40c08kog8w408og00wk0 <br />
@@ -47,16 +47,19 @@ ProjectBoard: https://github.com/users/GuidoWestra/projects/1 <br />
 Model: https://dbdiagram.io/d/5ffec5ac80d742080a362421 <br />
 Back-end: https://github.com/GuidoWestra/Chefs-Choice-Back <br />
 Demo video: https://youtu.be/77w8T94SB4o<br />
-
 :wrench: Working on apk download link!
-
+# Screenshots!
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/1.jpeg" width="400" height="800" alt="screenshot">
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/2.jpeg" width="400" height="800" alt="screenshot">
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/3.jpeg" width="400" height="800" alt="screenshot">
+<img src="https://github.com/GuidoWestra/Chefs-Choice-Front/blob/main/screenshots/4.jpeg" width="400" height="800" alt="screenshot">
 # Instalation steps: 
 - clone the repo to your device using:  git clone <link> <your project name>  <br />
 - change directory to the cloned repo:  cd <your project name> <br />
 - install all dependencies using:       npm install<br />
 - start expo using:                     npm start<br />
 
-
+# Technologies used:
 <img align="left" alt="css logo" width="26px" src="https://cdn.iconscout.com/icon/free/png-512/css-118-569410.png"/>
 <img align="left" alt="js logo" width="26px" src="https://www.freepnglogos.com/uploads/javascript-png/javascript-vector-logo-yellow-png-transparent-javascript-vector-12.png"/>
 <img align="left" alt="react logo" width="26px" src="https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png"/>
