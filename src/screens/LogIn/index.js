@@ -95,7 +95,7 @@ export default function LogIn({ navigation }) {
             simply log out! {"\n"} {"\n"}Thanks for downloading my app! Please let me know if you
             find any bugs, or have any cool ideas to add! {"\n"} {"\n"}--Chef
           </Text>
-          <Image style={styles.logo} source={require("../../../assets/logos/AppBase.jpg")} />
+          <Image style={styles.logo} source={require("../../../assets/logos/AppBase.png")} />
         </ScrollView>
       </Modal>
     </View>

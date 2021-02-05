@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
 
     case "Log_Out":
       AsyncStorage.removeItem("token");
-      return { ...initialState, token: null };
+      return initialState;
 
     case "Token_Still_Valid":
       return { ...state, ...action.payload };
