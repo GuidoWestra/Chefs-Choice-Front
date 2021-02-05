@@ -81,8 +81,8 @@ const styles = StyleSheet.create({
     marginTop: 500,
   },
   title: {
-    paddingTop: 10,
-    fontSize: 20,
+    paddingBottom: 40,
+    fontSize: 22,
     fontWeight: "bold",
   },
   error: {
