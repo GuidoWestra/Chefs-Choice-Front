@@ -14,7 +14,7 @@ i asked myself the same question. Well now someone has.
 ME! :D isnt that crazy?? 10 weeks ago i was learning how, 
 to console.log("doesn't that seem like a long time ago?")
 Now im here building full stack apps. And actually being able
-to transfer my ideas into code:D!! i know crazy stuff.. 
+to transfer my ideas into code:D!! I know crazy stuff.. 
 
 enough about me. lets shed some light on the app.. 
 
